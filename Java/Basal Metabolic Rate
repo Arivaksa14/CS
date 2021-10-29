@@ -1,0 +1,80 @@
+import java.text.DecimalFormat;
+import java.util.Scanner;
+
+public class Main
+{
+	public static final int CHOCOLATE_BAR_CALORIES = 230;
+
+    public static void main(String[] args)
+    {
+        double weight, height, age, bmr, bars;
+        String gender;
+        int activityFactor;
+        // Use scanner for user input
+        Scanner keyboard = new Scanner(System.in);
+        DecimalFormat noDP = new DecimalFormat("#");
+        DecimalFormat oneDP = new DecimalFormat("#.0");
+        
+        
+        // User input
+        System.out.println("Enter your weight in pounds: ");
+        weight = keyboard.nextDouble();
+        System.out.println("Enter your height in inches: ");
+        height = keyboard.nextDouble();
+        System.out.println("Enter your age in years: ");
+        age = keyboard.nextDouble();
+        keyboard.nextLine();
+        System.out.println("Please enter Male or Female: ");
+        gender = keyboard.nextLine();
+        System.out.println("1. Sedentary (not active)\n2. Somewhat active (exercise occasionally)\n3. Active (exercise 3-4 times per week)\n4. Highly Active (exercise every day)");
+        activityFactor=keyboard.nextInt();
+        keyboard.close(); 
+        // CLOSE THE SCANNER WHEN DONE READING
+        
+        // BMR calculation with Harris-Benedict equation
+        if (gender.equalsIgnoreCase("Female"))
+        {bmr = 655 + (4.35 * weight) + (4.7 * height) - (4.7 * age);  
+         if(activityFactor==1)
+        {
+          bmr*=1.2;
+
+        }
+        else if(activityFactor==2)
+        {
+          bmr*=1.3;
+
+        }
+        else if(activityFactor==3)
+        {
+          bmr*=1.4;
+ 
+        }
+        else
+        {bmr*=1.5;}
+        } 
+       else {bmr = 66 + (6.23 * weight) + (12.7 * height) - (6.8 * age); 
+        if(activityFactor==1)
+        {
+          bmr*=1.2;
+
+        } 
+        else if(activityFactor==2)
+        {
+          bmr*=1.3;
+
+        }        else if(activityFactor==3)
+        {
+
+          bmr*=1.4;
+
+        }        
+
+        else
+        {
+        bmr=bmr*1.5;
+        }
+}  
+       bars = bmr / CHOCOLATE_BAR_CALORIES;
+        System.out.println("\nAs a "+gender+" your BMR x Activity Factor is "+ noDP.format(bmr) + " and you need to eat "+oneDP.format(bars)+" chocolate bars to maintain this amount of calories.");
+  
+}}
