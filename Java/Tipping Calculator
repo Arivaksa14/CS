@@ -1,0 +1,29 @@
+import java.util.Scanner;
+import java.text.DecimalFormat;
+
+
+
+class Main {
+  public static final double TAX_RATE=8.25;
+  public static void main(String[] args) {
+    
+    Scanner scanner= new Scanner(System.in);
+    DecimalFormat twoDPs= new DecimalFormat("0.00");
+    
+    System.out.print("Please enter amount of restaurant bill $");
+
+    double bill=scanner.nextDouble();
+
+    System.out.print("Please enter the tip percentage (%) ");
+    double percentage =scanner.nextDouble();
+    double totalTax= bill*(TAX_RATE/100);
+    System.out.println("\nThe total taxes are $"+twoDPs.format(totalTax));
+    double totalTip= (bill+totalTax)*(percentage/100);
+    System.out.println("The tip amount is $"+ twoDPs.format(totalTip));
+    double totalAmount= bill+totalTax+totalTip;
+
+    System.out.println("\nThe total amount to pay is $"+twoDPs.format(totalAmount));
+
+    scanner.close();
+  }
+}
