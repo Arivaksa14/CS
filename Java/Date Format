@@ -1,0 +1,19 @@
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner keyboard = new Scanner(System.in);
+        String usDate, euDate, day = "", month = "", year = "";
+        System.out.print("Enter the date (format MM/DD/YYYY) and include the forward slashes:");
+        usDate = keyboard.nextLine();
+        month = usDate.substring(0, 2);
+        day = usDate.substring(3, 5);
+        year = usDate.substring(6);
+        euDate = day + "." + month + "." + year;
+        System.out.println("In the European format, DD.MM.YYYY, this date is:");
+        System.out.println(euDate);
+
+        keyboard.close();
+    }
+}
