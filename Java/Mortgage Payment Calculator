@@ -1,0 +1,23 @@
+import java.util.Scanner;
+import java.text.NumberFormat;
+class Main {
+  public static final double ANNUAL_INTEREST_RATE=0.04;
+  public static void main(String[] args) {
+    Scanner scanner= new Scanner(System.in);
+    NumberFormat currency= NumberFormat.getCurrencyInstance();
+
+    System.out.print("Please enter your mortgage payment: $");
+    double mortgagePayment= scanner.nextDouble();
+    System.out.print("Please enter outstanding balance on mortgage: $");
+    double outstandingBalance= scanner.nextDouble();
+    double interest= (outstandingBalance*ANNUAL_INTEREST_RATE)/12;
+
+    double principal=mortgagePayment-interest;
+
+
+    System.out.println("Of your "+currency.format(mortgagePayment)+" mortgage payment:\n"+currency.format(interest)+" goes to interest\n"+currency.format(principal)+" goes to principal");
+
+    scanner.close();
+
+  }
+}
