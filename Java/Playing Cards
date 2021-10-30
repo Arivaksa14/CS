@@ -1,0 +1,81 @@
+import java.util.Scanner;
+
+class Main {
+  public static void main(String[] args) {
+   String rank,suit;
+   Scanner keyboard = new Scanner(System.in);
+		
+		System.out.print("Enter a playing card: ");
+		rank = keyboard.next();
+
+	  suit = keyboard.next();
+
+	
+		switch (rank.toUpperCase())
+    {case "2":
+			rank = "Two";
+      break;
+		 case "3": 
+			rank = "Three";
+      break;
+		 case "4": 
+			rank = "Four";
+      break;
+		 case "5": 
+			rank = "Five";
+      break;
+		 case "6": 
+			rank = "Six";
+      break;
+		 case "7": 
+			rank = "Seven";
+      break;
+		 case"8": 
+			rank = "Eight";
+      break;
+		 case"9": 
+			rank = "Nine";
+      break;
+		 case "10": 
+		 rank = "Ten";
+     break;
+		 case "K": 
+			rank = "King";
+      break;
+		 case "A": 
+			rank = "Ace";
+      break;
+		 case "Q": 
+			rank = "Queen";
+      break;
+		 case "J": 
+			rank = "Jack";
+      break;
+		 default:
+     System.out.println("Invalid rank!");}
+
+
+			switch (suit.toUpperCase()) {
+				case "C":
+        suit= "Clubs";
+        break;
+			 case "D": 
+				suit = "Diamonds";
+        break;
+			 case "H": 
+				suit= "Hearts";
+        break;
+			 case "S": 
+				suit= "Spades";
+        break;
+        default:
+        System.out.println("Invalid suit!");
+			}
+		
+		System.out.println(rank + " of " + suit);
+    keyboard.close();
+  }
+}
+
+
+	
