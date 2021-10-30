@@ -1,0 +1,72 @@
+class Main {
+  public static void main(String[] args) {
+    System.out.println("5^2 is = "+squared(5));
+     System.out.println("3^2 is = "+power(3,2));
+     System.out.println("2+3+4+5+6 is = "+summation(2,6));
+     System.out.println("1*2*3*4*5 is = "+factorial(5));
+    System.out.println("Ceiling of 2.1 is = "+ceiling(2.1));
+    System.out.println("Floor of 2.1 is = "+floor(2.1));
+     System.out.println("Ceiling of -2.1 is = "+ceiling(-2.1));
+    System.out.println("Floor of -2.1 is = "+floor(-2.1));
+  }
+  public static double squared (double n)
+  { 
+    double answer= n*n;
+    return answer;}
+
+public static int power(int base, int exp)
+{
+  int answer=1;
+  for (int i =1;i<=exp;i++)
+  {
+    answer*=base;
+  }
+  return answer;
+}
+  
+
+  public static int summation(int lower, int upper){
+
+    int answer=0;
+    
+    for(int i=lower;i<=upper;i++)
+    {
+      answer+=i;
+    }
+    return answer;
+}
+public static int factorial(int n){
+  int answer=1;
+    if (n==0){
+      answer=1;
+
+    }
+    else
+    for(int i=1;i<=n;i++)
+    {
+      answer*=i;
+    }
+    return answer;
+
+}
+public static int ceiling (double n)
+{
+  if (n>0)
+  {int answer=(int )(n+1)/1;
+  return answer;}
+  
+  else
+  {int answer=(int )n/1;
+  return answer;}
+  
+  
+}
+public static int floor(double n)
+{
+if(n>0){
+ int answer=(int )n/1;
+  return answer;}
+  else{
+   int answer=(int )(n-1)/1;
+    return answer;
+  }}}
