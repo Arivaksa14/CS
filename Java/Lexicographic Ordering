@@ -1,0 +1,39 @@
+import java.util.Scanner;
+
+public class Main{
+public static void main(String[] args){
+    String firstString, secondString, thirdString;
+
+    Scanner keyboard = new Scanner(System.in);
+
+    System.out.println("Please enter three separate strings: ");
+
+    firstString = keyboard.nextLine();
+    secondString = keyboard.nextLine();
+    thirdString = keyboard.nextLine();
+
+   String topString = "";
+   String middleString = "";
+   String bottomString = "";
+
+
+    if (firstString.compareTo(secondString) <=0 && (secondString.compareTo(thirdString) <=0)) 
+    { System.out.println("1");topString = firstString; middleString=secondString; bottomString=thirdString; }
+    else if (secondString.compareTo(firstString) <= 0 && (firstString.compareTo(thirdString) <=0)) 
+     {System.out.println("2"); middleString = firstString; topString=thirdString; bottomString=secondString; }
+     else if (firstString.compareTo(secondString) <=0 && (secondString.compareTo(thirdString) <=0)) 
+    { System.out.println("3"); topString = firstString; middleString=thirdString; bottomString=secondString; }
+    else if (secondString.compareTo(firstString) <=0 && (secondString.compareTo(thirdString) <=0)) 
+     {System.out.println("4"); middleString = secondString; topString=thirdString; bottomString=firstString; }
+     else if (secondString.compareTo(firstString) <=0 && (firstString.compareTo(thirdString) <=0)) 
+     {System.out.println("5"); topString = secondString; middleString=firstString; bottomString=thirdString; }
+     else if (thirdString.compareTo(firstString) <=0 && (thirdString.compareTo(secondString) <=0)) {
+    System.out.println("6");topString = thirdString; middleString=secondString; bottomString=firstString; }
+
+
+    System.out.println("In lexicographic order, the strings you entered are:\n" + topString);
+    System.out.println(middleString);
+    System.out.println(bottomString);
+    keyboard.close();
+    }
+}
