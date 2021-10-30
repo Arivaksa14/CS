@@ -1,0 +1,132 @@
+import java.util.Scanner;
+import java.text.DecimalFormat;
+public class Main {
+
+	public static void main(String args[]) {
+    Scanner keyboard = new Scanner(System.in);
+    DecimalFormat oneDP = new DecimalFormat("0.0");
+    String name;
+    int choice, count = 0, slices;
+    double average, min = Double.MAX_VALUE, max =Double.MIN_VALUE, calories, total = 0.0, diameter, area;
+
+		System.out.println("********************************************************************\n"
+				+ "**                                                                **\n"
+				+ "**               WELCOME TO THE \"SWEET\" MIDTERM                   **\n"
+				+ "**                                                                **\n"
+				+ "********************************************************************\n"
+				+ "** Please select from the following choices:                      **\n"
+				+ "** 1) Calculate statistics of desserts                            **\n"
+				+ "** 2) Display shape using nested loops                            **\n"
+				+ "** 3) Use value-returning method: areaOfCakeSlice                 **\n"
+				+ "** 4) Exit                                                        **\n"
+				+ "********************************************************************");
+
+		// In main method:
+
+		// 1) Get the choice from the user
+    choice = keyboard.nextInt();
+		// 2) Use switch statement for each of the 4 choices
+		// Default should print error message "Error: Please make a selection 1-4."
+				
+    switch(choice)
+    {
+      case 1:
+      // Choice 1: In a loop, prompt user to enter dessert name and calories (quit
+      // to exit the loop)
+      // When user types quit for the dessert name, display the statistics (total,
+      // average, min and max)
+        do{
+        System.out.print("Enter name of dessert (or quit to exit): ");
+        keyboard.nextLine();
+        name = keyboard.nextLine();
+
+        if(name.equalsIgnoreCase("quit"))
+          break;
+        System.out.print("Enter calories: ");
+        calories = keyboard.nextDouble();
+        System.out.println();
+
+        if(calories > max)
+          max = calories;
+        if(calories < min)
+          min = calories;
+        
+        total += calories;
+        count++;
+        }while(!(name.equalsIgnoreCase("quit")));
+
+        average = total/count;
+        System.out.println("\n~~~Dessert Calorie Statistics~~~\n");
+        System.out.println("Total Calories   = " + total);
+        System.out.println("Average Calories = " + oneDP.format(average));
+        System.out.println("Minimum Calories = " + min);
+        System.out.println("Maximum Calories = " + max);
+      break;
+      
+      case 2:
+      // Choice 2: Nested Loops - write nested for loops to display the pattern
+      // specified.
+        System.out.println("~~~The Shape You Requested~~~\n");
+        for(int row = 1; row <= 4; row++)
+        {
+          for(int tilde = 1; tilde <= row-1; tilde++)
+            System.out.print("~");
+          for(int num = 1;num <= -2*row+9; num++)
+            System.out.print(num);
+          for(int tilde = 1; tilde <= row-1; tilde++)
+            System.out.print("~");
+            System.out.println();
+        }
+        break;
+
+      case 3:
+      // Choice 3: Value-returning method - create a value returning method (after main method) named:
+      // public static double areaOfCakeSlice(double diameter, int slices)
+      // * this method takes, as input, a diameter of a cake in inches (e.g. 12.0 inches)
+      // * and the number of slices to divide the cake into (e.g. 8 slices)
+      // * The method first calculates the total area of the entire cake as pi
+      // (3.141592) * radius ^ 2
+      // * Recall that the radius is 1/2 the diameter of the cake
+      // * To find the area of a cake slice, divide the total area by the number of slices
+      // * Return this answer
+    
+        System.out.print("Enter diameter of cake: ");
+        diameter = keyboard.nextDouble();
+        System.out.print("Enter number of slices: ");
+        slices = keyboard.nextInt();
+
+        area = areaOfCakeSlice(diameter, slices);
+        System.out.println("\nThe area of each slice is " + oneDP.format(area) + " sq inches.");
+        break;
+		
+		// Choice 4: Display a message: I hope you have a sugar coated day!
+		
+      case 4:
+        System.out.println("I hope you have a sugar coated day!");
+        break;
+        default: 
+        System.out.println("Error: Please enter a choice between 1-4.");
+
+        System.exit(0);
+    }
+    keyboard.close();
+	}
+  public static double areaOfCakeSlice(double diameter, int slices)
+  {
+    double radius = diameter/ 2;
+    double area = (3.141592) * radius * radius;
+    area = area / slices;
+
+    return area;}}
+
+
+
+
+public static void splitPepperName(String name)
+    {
+
+      String splitName1=name.substring(0,name.length()/2+1);
+      String splitName2=name.substring(name.length()/2+1);
+      System.out.print(splitName2+splitName1);
+
+    }
