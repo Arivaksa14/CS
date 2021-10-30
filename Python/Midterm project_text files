@@ -1,0 +1,64 @@
+# Problem Statement: Write a program that finds the mean, median, and standard deviation(these should be functions)of a list of numbers which you read from a file.
+#1 number per line and should support both positive and negative number. 
+#
+# Overall Plan:
+# 1. Read in the input text file
+# 2. Calculate mean, median,SD, and 2 SD range by using functions for each calculation.
+# 3. Create common error messages 
+# 4. Display the mean, median, and standard deviation range to the screen.
+#
+#
+# import the necessary python libraries
+# for this example math library is needed
+import math
+
+def main():
+    infile=open('input.txt',"r")
+    numbers = []
+    for line in infile:
+        try:
+            numbers.append(int(line))
+        except ValueError:
+            print("The format of input is incorrect.",ValueError)
+    if (len(numbers)==0):
+        print("The list is empty! Try again.")
+        return
+    mean_value=mean(numbers)
+    print("Mean is ",round(mean_value,3))
+    print("Median is: ",median(numbers))
+    sd_value=sd(numbers)
+    print("Standard deviation is: ",round(sd_value,3))
+    print("2 standard deviation range is from: ",round(lowerRange(mean_value,sd_value),3),"to",round(upperRange(mean_value,sd_value),3))
+def mean(numbers): 
+    total=0
+    for num in numbers:
+        total += num
+    return total/len(numbers)
+
+def median(numbers):
+    n=len(numbers)
+    numbers.sort()
+    if n % 2 == 0:
+        median1 =numbers[n//2]
+        median2 =numbers[n//2 - 1]
+        median = (median1 + median2)/2
+    else:
+        median = numbers[n//2]
+    return median
+def sd(numbers):
+    mean_value=mean(numbers)
+    deviations = [(num-mean_value) ** 2 for num in numbers]
+    variance = sum(deviations)/(len(numbers)-1)
+    sd=math.sqrt(variance)
+    return sd
+
+def lowerRange(mean_value,sd_value):
+    lowerRange=mean_value-2*sd_value
+    return lowerRange
+def upperRange(mean_value,sd_value):
+    upperRange=mean_value+2*sd_value
+    return upperRange
+
+main()
+
+
