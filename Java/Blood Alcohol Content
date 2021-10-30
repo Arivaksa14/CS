@@ -1,0 +1,26 @@
+import java.util.Scanner;
+import java.text.DecimalFormat;
+class Main {
+public static final double OUNCES_ALCOHOL=1.5;
+public static final double BAC_LIMIT=0.08;
+  public static void main(String[] args) {
+  double drinks,weight,bac;
+  Scanner keyboard=new Scanner(System.in);
+  DecimalFormat twoDPs= new DecimalFormat("0.00");
+
+    System.out.print("Enter the number of alcoholic drinks consumed: ");
+    drinks=keyboard.nextDouble();
+    System.out.print("Please enter your weight in lbs: ");
+    weight=keyboard.nextDouble();
+    bac=(4.136*drinks*OUNCES_ALCOHOL)/weight;
+
+    System.out.println("\nYour BAC is  "+twoDPs.format(bac));
+    if (bac>=BAC_LIMIT)
+    {System.out.println("According to the state of California, you are intoxicated. Do not drive!");}
+    else {System.out.println("You are not legally intoxicated, but please drive safely.");}
+
+
+    keyboard.close();
+
+  }
+}
