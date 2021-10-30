@@ -1,0 +1,34 @@
+
+# Problem Statement: Write definitions for these functions:
+#sphereArea(radius) Returns the surface area of a sphere having the given radius.
+#sphereVolume(radius) Returns the volume of a sphere having the given radius. 
+#
+#
+# Overall Plan:
+# 1. Promt the user for radius input
+# 2. create two different functions for area and volume of the sphere
+# 3. Invoke both area and volume fuctions in the main
+# 4. Print the area volume to the screen given the user's radius
+#
+#
+# import the necessary python libraries
+# for this example math is needed
+import math
+
+def sphereArea(radius):
+    area=4*(radius**2)*math.pi
+    return area;
+def sphereVolume(radius):
+    volume=(4/3)*math.pi*(radius**3)
+    return volume;
+
+def main():
+    radius=eval(input("Please enter the radius:" ))
+    area=sphereArea(radius)
+    volume=sphereVolume(radius)
+    
+    print("Area of the sphere is ",round(area,3))
+    print("Volume of the sphere is ",round(volume,3))
+    
+main()
+    
