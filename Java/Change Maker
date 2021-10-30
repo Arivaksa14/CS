@@ -1,0 +1,28 @@
+import java.util.Scanner;
+
+class Main {
+  public static final int QUARTER_VALUE=25;
+  public static final int DIME_VALUE=10;
+  public static final int NICKEL_VALUE=5;
+  public static final int PENNY_VALUE=1;
+  public static void main(String[] args) {
+    Scanner scanner= new Scanner(System.in);
+    System.out.println("Enter a whole number from 1 to 99.\nI will find a combination of coins to equal that amount of change.");
+    int changeAmount=scanner.nextInt();
+    System.out.println();
+    System.out.println(changeAmount+" cents in coins can be given as:");
+    
+     int quarter,dime,nickel,penny;
+    quarter=changeAmount/QUARTER_VALUE;
+    changeAmount=changeAmount%QUARTER_VALUE;
+    dime=changeAmount/DIME_VALUE;
+    changeAmount=changeAmount%DIME_VALUE;
+    nickel=changeAmount/NICKEL_VALUE;
+    changeAmount=changeAmount%NICKEL_VALUE;
+    penny=changeAmount/PENNY_VALUE;
+    System.out.print(quarter+ " quarter(s)\n"+ dime+" dime(s)\n"+nickel+" nickel(s)\n"+penny+" penny(ies)");
+
+    scanner.close();
+
+  }
+}
