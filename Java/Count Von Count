@@ -1,0 +1,31 @@
+import java.util.Scanner;
+class Main {
+  public static void main(String[] args) {
+    int magicNumber;
+    int i;
+    Scanner keyboard=new Scanner(System.in);
+
+    System.out.print("Count von Count: What is the magic number of the day? ");
+    magicNumber=keyboard.nextInt();
+    
+    if (magicNumber<=0){
+        System.out.println("I'm sorry but the Count von Count only counts positive numbers! Muhahahaha");
+        System.exit(0);
+      }
+    System.out.println("");
+    for( i=1; i<=magicNumber;i++)
+    {
+      System.out.print(i);
+      if (i<magicNumber){
+      System.out.print(" , ");}}
+
+    
+      System.out.println("\n\n"+magicNumber+"! "+magicNumber+" is the magic number of the day.");
+      System.out.println(magicNumber+" dancing vegetables are here to celebrate with me! I love dancing vegetables!");
+      
+      
+      keyboard.close();
+      
+      }
+      
+}
