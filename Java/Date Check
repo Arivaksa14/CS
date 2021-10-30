@@ -1,0 +1,104 @@
+import java.util.Scanner;
+
+public class Main {
+  
+   public static void main(String[] args) {
+       // Scanner object to read date
+       Scanner keyboard = new Scanner(System.in);
+       System.out.println("Enter date in the form MM/DD/YYYY:");
+       // read the date from user
+       String date = keyboard.next(); 
+      
+       // find month from date
+       String monthPart = date.substring(0, 2);
+       int month = Integer.parseInt(monthPart);
+       // find day from date
+       String dayPart = date.substring(3, 5);
+       int day = Integer.parseInt(dayPart);
+       // find year from date
+       String yearPart = date.substring(6);
+       int year = Integer.parseInt(yearPart);
+       boolean flag = true;
+
+       // check month is valid or not
+      switch(month)
+
+       {
+            case 1:
+           break;
+           case 2:
+           break;
+           case 3:
+           break;
+           case 4:
+           break;
+           case 5:
+           break;
+           case 6:
+           break;
+           case 7:
+           break;
+           case 8:
+           break;
+           case 9:
+           break;
+           case 10:
+           break;
+           case 11:
+           break;
+           case 12:
+           break;
+           default:
+           System.out.println();
+           System.out.println("Invalid month.");
+           flag=false;
+           }
+       //check day is valid or not
+       if (day < 1) {
+           System.out.println();
+           System.out.println("Invalid day.");
+          flag=false;
+
+       }
+       // check days in those month which has 30 days
+       else if ((month == 4 || month == 6 || month == 9 || month == 11) && day > 30) {
+           System.out.println();
+           System.out.println("Invalid day.");
+           flag=false;
+
+       }
+       else if ((month == 1 || month == 3 || month == 5 || month == 7 || month==8 ||month==10 || month==12) && day > 31) {
+           System.out.println();
+           System.out.println("Invalid day.");
+           flag=false;}
+       // if month is February then check leap year and days
+       else if (month == 2 && ((year % 4 == 0) && (year % 100 != 0))) {
+           if (day > 29) {
+               System.out.println();
+               System.out.println("Invalid day. Leap year has only 29 days.");
+              flag=false;
+ 
+           }
+       }
+       // if month is February and year is non-leap
+       else if (month == 2 && day > 28) {
+           System.out.println();
+           System.out.println("Invalid day. In a non-leap year, only 28 days in February.");
+           flag=false;
+       }
+       //check if year has extra digits
+       else if (year>9999){
+         System.out.println();
+         System.out.println("Invalid year.");
+         flag=false;
+
+       }
+        
+       // if all are valid
+       if(flag!=false)
+          { System.out.println();
+          System.out.println("The date you entered is valid!");}
+       
+           keyboard.close();
+   }
+}
