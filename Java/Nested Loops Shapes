@@ -1,0 +1,91 @@
+class Main {
+  public static void main(String[] args) {
+    ascii();
+    System.out.println();
+    ascii_1();
+    System.out.println();
+    printFlag();
+  }
+  public static void ascii()
+  {
+    for (int row = 1; row <=6; row++)
+    {
+      for (int back_slash = 1; back_slash <=2*row-2; back_slash++)
+      {
+        System.out.print("\\");
+      }
+
+      for (int ex = 1; ex <= -4*row+26; ex++ )
+      {
+        System.out.print("!");
+      }
+      for (int forward_slash = 1; forward_slash <=2*row-2; forward_slash++ )
+      {
+        System.out.print("/");
+      }
+
+       System.out.println();
+      }
+  }
+  public static void ascii_1()
+  {
+    for (int rows = 1; rows <=5; rows++)
+    {
+      for (int forward_slash = 1; forward_slash <=-4*rows+20; forward_slash++)
+      {
+        System.out.print("/");
+      }
+
+      for (int star = 1; star <= 8*rows-8; star++ )
+      {
+        System.out.print("*");
+      }
+      for (int back_slash = 1; back_slash <=-4*rows+20; back_slash++ )
+      {
+        System.out.print("\\");
+      }
+
+       System.out.println();
+      }  }
+      
+      public static void printBorder(){
+    System.out.print("|");
+  }
+   public static void printStars(int n){
+      for (int star=1;star<=n;star++)
+     System.out.print("* ");
+   }
+   public static void printStripes(int n)
+{ 
+  for (int stripe=1;stripe<=n;stripe++)
+     System.out.print("0");
+}
+public static void printFlag()
+{
+
+ for (int row=1;row<=13;row++)
+  { 
+
+    if (row<=7){
+    printBorder();
+    if (row%2==1)
+    printStars(10);
+    
+    else
+    {
+      System.out.print(" ");
+      printStars(9);
+      System.out.print(" ");
+    }
+    printStripes(25);
+    printBorder();
+    System.out.println();
+  }
+  else
+  {
+    printBorder();
+    printStripes(45);
+    printBorder();
+    System.out.println();
+
+  }}}}
