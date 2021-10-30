@@ -1,0 +1,60 @@
+
+# Problem Statement: Ask the user to enter two numbers, calculate the sum of 
+# these two numbers, and display the sum to the screen
+#
+#
+# Overall Plan:
+# 1. Print an initial welcoming message to the screen
+# 2. Prompt the user for two integers
+# 3. Calculate the sum of the integers
+# 4. Print the sum of the integers to the screen
+#
+#
+# import the necessary python libraries
+# for this example graphics.py is needed
+
+from graphics import *
+win = GraphWin("Sum of the two numbers",600,600)
+win.setBackground('peachpuff')
+
+
+
+def main():
+    # Print a message to the screen
+    Text(Point(20,20),"Hello!").draw(win)
+    Text(Point(80,30),"I can add two numbers for you").draw(win)
+
+  # Draw the interface
+    Text(Point(100,50), "   Number 1").draw(win)
+    Text(Point(100,100), "  Number 2").draw(win)
+    Text(Point(100,280), "The sum is:").draw(win)
+    inputBox1 = Entry(Point(200,50), 7)
+    inputBox2 = Entry(Point(200,100), 7)
+    inputBox1.setText("0.0")
+    inputBox2.setText("0.0")
+    inputBox1.draw(win)
+    inputBox2.draw(win)
+    output = Text(Point(100,300),"")
+    output.setFill("red")
+    output.draw(win)
+    button = Text(Point(100,200),"Calculate the sum")
+    button.draw(win)
+    Rectangle(Point(20,150), Point(200,250)).draw(win)
+
+    # wait for a mouse click
+    win.getMouse()
+
+    # convert input
+    num1 = eval(inputBox1.getText())
+    num2 = eval(inputBox2.getText())
+    sum=num1+num2
+
+    # display output and change button
+    output.setText(sum)
+    button.setText("Quit")
+
+    # wait for click and then quit
+    win.getMouse()
+    win.close()
+
+main()
