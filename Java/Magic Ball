@@ -9,50 +9,111 @@ class Main {
   System.out.println("What question would you like to ask the Magic 8 Ball? ");
   String question=keyboard.nextLine();
   Random rng = new Random();
-  int answer = rng.nextInt(8) + 1; 
+  int answer = rng.nextInt(20)+1; 
 
  switch(answer){ 
    case 1:
    System.out.println("The answer is: It is certain");
+   System.out.println("The answer is affirmative.");
    break;
    case 2:
 
   System.out.println("The answer is: It is decidedly so");
+  System.out.println("The answer is affirmative.");
   break;
   case 3:
 
   System.out.println("The answer is: Most likely");
+  System.out.println("The answer is affirmative.");
   break;
 
   case 4:
   System.out.println("The answer is: Signs point to yes");
+  System.out.println("The answer is affirmative.");
   break;
   case 5:
   System.out.println("The answer is: Reply hazy, try again");
+  System.out.println("The answer is neutral.");
   break;
   case 6: 
   System.out.println("The answer is: Ask again later");
+  System.out.println("The answer is neutral.");
   break;
   case 7: 
   System.out.println("The answer is: Don't count on it");
+  System.out.println("The answer is negative.");
   break;
   case 8:
   System.out.println("The answer is: My sources say no"); 
+  System.out.println("The answer is negative.");
+  break;
+   case 9:
+
+  System.out.println("The answer is: Without a doubt");
+  System.out.println("The answer is affirmative.");
+  break;
+  case 10:
+
+  System.out.println("The answer is: Yes definitely ");
+  System.out.println("The answer is affirmative.");
+  break;
+  case 11:
+
+  System.out.println("The answer is: You may rely on it ");
+  System.out.println("The answer is affirmative.");
+  break;
+  case 12:
+
+  System.out.println("The answer is: As I see it,yes ");
+  System.out.println("The answer is affirmative.");
+  break;
+  case 13:
+
+  System.out.println("The answer is: Outlook good ");
+  System.out.println("The answer is affirmative.");
+  break;
+  case 14:
+
+  System.out.println("The answer is: Yes ");
+  System.out.println("The answer is affirmative.");
+  break;
+  case 15:
+
+  System.out.println("The answer is: Better not tell you now");
+  System.out.println("The answer is neutral.");
+  break;
+  case 16:
+
+  System.out.println("The answer is: Cannot predict now");
+  System.out.println("The answer is neutral.");
+  break;
+  case 17:
+
+  System.out.println("The answer is: Concentrate and ask again");
+  System.out.println("The answer is neutral.");
+  break;
+  case 18:
+  System.out.println("The answer is: My reply is no"); 
+  System.out.println("The answer is negative.");
+  break;
+  case 19:
+  System.out.println("The answer is: Outlook not so good"); 
+  System.out.println("The answer is negative.");
+  break;
+  case 20:
+  System.out.println("The answer is: Very doubtful "); 
+  System.out.println("The answer is negative.");
   break;
   }
-  
     System.out.println("\nWould you like to ask another question (Type Y or N)?");
 
     YesNo= keyboard.nextLine();}
 
-
     while (YesNo.equalsIgnoreCase("Y"));
-    
-   System.out.print("Thank you for playing the Magic 8 Ball. ");
   
+    System.out.print("Thank you for playing the Magic 8 Ball. ");
 
     keyboard.close();
-
 
   }
 }
