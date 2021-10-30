@@ -1,0 +1,32 @@
+
+# Problem Statement: You need to create a program that allows you to create a connect-the-dot picture.  
+#
+# Overall Plan:
+# 1. Get a point input from the user
+# 2. Get up to 100 new point inputs from the user, connect two neighboring dots by drawing a line segment
+# 3. Display each point to the screen, connect dots to make a picture.
+#
+#
+# import the necessary python libraries
+# for this example graphics library is needed
+
+from graphics import*
+
+def main():
+    win=GraphWin("Draw a line segment",600,600)
+    win.setBackground("white")
+    win.setCoords(0.0,0.0,10.0,10.0)
+    message=Text(Point(14,-15),"Click on up to 100 points to draw your picture").draw(win)
+
+    p1=win.getMouse().draw(win)
+    message1=Text(Point(p1.getX(),p1.getY()),"p1").draw(win)
+ 
+    for i in range(1,100):
+        p2=win.getMouse().draw(win)
+        message2=Text(Point(p2.getX(),p2.getY()),"p"+str(i+1)).draw(win)
+        line=Line(p1,p2)
+        line.setOutline("black")
+        line.draw(win)
+        p1=p2
+main()
+    
