@@ -1,0 +1,58 @@
+import java.util.Scanner;
+import java.util.Random;
+
+class Main {
+  public static void main(String[] args) {
+  String YesNo="";
+ Scanner keyboard=new Scanner(System.in);
+ do{
+  System.out.println("What question would you like to ask the Magic 8 Ball? ");
+  String question=keyboard.nextLine();
+  Random rng = new Random();
+  int answer = rng.nextInt(8) + 1; 
+
+ switch(answer){ 
+   case 1:
+   System.out.println("The answer is: It is certain");
+   break;
+   case 2:
+
+  System.out.println("The answer is: It is decidedly so");
+  break;
+  case 3:
+
+  System.out.println("The answer is: Most likely");
+  break;
+
+  case 4:
+  System.out.println("The answer is: Signs point to yes");
+  break;
+  case 5:
+  System.out.println("The answer is: Reply hazy, try again");
+  break;
+  case 6: 
+  System.out.println("The answer is: Ask again later");
+  break;
+  case 7: 
+  System.out.println("The answer is: Don't count on it");
+  break;
+  case 8:
+  System.out.println("The answer is: My sources say no"); 
+  break;
+  }
+  
+    System.out.println("\nWould you like to ask another question (Type Y or N)?");
+
+    YesNo= keyboard.nextLine();}
+
+
+    while (YesNo.equalsIgnoreCase("Y"));
+    
+   System.out.print("Thank you for playing the Magic 8 Ball. ");
+  
+
+    keyboard.close();
+
+
+  }
+}
