@@ -1,0 +1,30 @@
+import java.util.Scanner;
+import java.util.Arrays;
+import java.text.DecimalFormat;
+class Main {
+  public static void main(String[] args) {
+    double[]  monthlyRainfall=new double[12];
+    String [] monthNames={"January","February","March","April", "May","June","July","August","September","October","November","December"};
+  
+    Scanner keyboard=new Scanner(System.in);
+    DecimalFormat twoDPs=new DecimalFormat("0.00");
+    double total=0.0;
+
+    for(int i=0;i<monthlyRainfall.length;i++)
+    {
+      System.out.print("Enter rainfall amount (in inches) for "+monthNames[i]+" >> ");
+      monthlyRainfall[i]=keyboard.nextDouble();
+      if (monthlyRainfall[i]<0)
+      {System.out.println("\nSorry, we cannot accept negative numbers for monthly rainfall figures. Try running the program again!");
+      System.exit(0);}
+      total+=monthlyRainfall[i];
+    }
+     Arrays.sort(monthlyRainfall); 
+    System.out.println("\nTotal Rainfall for the Year (in inches): "+twoDPs.format(total));
+    System.out.println("Average Rainfall for the Year (in inches): "+twoDPs.format(total/monthlyRainfall.length));
+     System.out.println("Minimum Rainfall (in inches): "+monthlyRainfall[0]);
+      System.out.println("Maximum Rainfall (in inches): "+monthlyRainfall[(monthlyRainfall.length-1)]);
+
+    keyboard.close();
+  }
+}
