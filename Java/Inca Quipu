@@ -1,0 +1,86 @@
+import java.util.Scanner;
+class Main {
+  public static void main(String[] args) {
+    Scanner keyboard=new Scanner(System.in);
+
+    System.out.print("Enter a number between 0 and 999: ");
+
+    int number=keyboard.nextInt();
+
+    int hundredMillions = number/100000000;
+    int leftOver=number%100000000;
+    int tenMillions = leftOver/10000000;
+    leftOver=leftOver%10000000;
+    int millions = leftOver/1000000;
+    leftOver=leftOver%1000000;
+    int hundredThousands = leftOver/100000;
+    leftOver=leftOver%100000;
+    int tenThousands = leftOver/10000;
+    leftOver=leftOver%10000;
+    int thousands = leftOver/1000;
+    leftOver=leftOver%1000;
+    int hundreds = leftOver/100;
+    leftOver=leftOver%100;
+    int tens = leftOver/10;
+    leftOver=leftOver%10;
+    int ones = leftOver/1;
+
+    if (number>=0){
+
+    System.out.println("\nHundrend Millions= "+hundredMillions);
+    System.out.println("Ten Millions= "+tenMillions);
+    System.out.println("Millions= "+millions);
+    System.out.println("Hundrend Thousands= "+hundredThousands);
+    System.out.println("Ten Thousands= "+tenThousands);
+    System.out.println("Thousands= "+thousands);
+    System.out.println("Hundrends= "+hundreds);
+    System.out.println("Tens= "+tens);
+    System.out.println("Ones= "+ones);
+    System.out.println("\nAs an Inca Quipu, "+number+" is expressed as: ");
+
+   
+    System.out.print("-\n|\n|\n|\n");
+
+    for (int i=0;i<hundredMillions;i++)
+    {System.out.print("*\n");}
+    System.out.print("|\n|\n|\n");
+
+    for (int i=0;i<tenMillions;i++)
+    {System.out.print("*\n");}
+    System.out.print("|\n|\n|\n");
+
+    for (int i=0;i<millions;i++)
+    {System.out.print("*\n");}
+    System.out.print("|\n|\n|\n");
+
+    for (int i=0;i<hundredThousands;i++)
+    {System.out.print("*\n");}
+    System.out.print("|\n|\n|\n");
+
+    for (int i=0;i<tenThousands;i++)
+    {System.out.print("*\n");}
+    System.out.print("|\n|\n|\n");
+
+    for (int i=0;i<thousands;i++)
+    {System.out.print("*\n");}
+    System.out.print("|\n|\n|\n");
+
+    for (int i=0;i<hundreds;i++)
+    {System.out.print("*\n");}
+    System.out.print("|\n|\n|\n");
+    
+    for (int i=0;i<tens;i++)
+    {System.out.print("*\n");}
+    System.out.print("|\n|\n|\n");
+
+   for (int i=0;i<ones;i++)
+    {System.out.print("*\n");}
+
+    System.out.print("|\n|\n|\n-");
+   }
+  else
+{System.out.println("Error. Number must be grater than or equal to 0.");}
+keyboard.close();
+
+  }
+}
