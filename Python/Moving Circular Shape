@@ -1,0 +1,44 @@
+
+# Problem Statement: Write a function to meet this specification.
+#moveTo(shape, newCenter) shape is a graphics object that supports the getCenter method and newCenter is a Point.
+#Moves shape so that newCenter is its center.
+#
+#Use your function to write a program that draws a circle and then allows the user to click the window 10 times.
+#Each time the user clicks, the circle is moved where the user clicked.
+#
+#
+# Overall Plan:
+# 1. Promt the user for radius input
+# 2. create two different functions for area and volume of the sphere
+# 3. Invoke both area and volume fuctions in the main
+# 4. Print the area volume to the screen given the user's radius
+#
+#
+# import the necessary python libraries
+# for this example graphics is needed
+from graphics import *
+
+def move(shape, newCenter):
+    oldCenter = shape.getCenter()
+    myOldX, myOldY = oldCenter.getX(), oldCenter.getY()
+    myNewX, myNewY = newCenter.getX(), newCenter.getY()
+    moveX = myNewX - myOldX
+    moveY = myNewY - myOldY
+    shape.move(moveX, moveY)
+    return shape
+
+def main():
+    win = GraphWin("My Graph Win", 600, 600)
+    win.setBackground("yellow")
+    win.setCoords(0, 0, 10, 10)
+    Text(Point(5, 8.5), "Please click 10 times.").draw(win)
+    myPoint = win.getMouse()
+    myX, myY = myPoint.getX(), myPoint.getY()
+    myShape = Circle(myPoint, 2)
+    myShape.draw(win)
+
+    for x in range(1, 10):
+        newCenter = win.getMouse()
+        myShape = move(myShape, newCenter)
+
+main()
