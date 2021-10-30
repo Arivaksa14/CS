@@ -1,0 +1,62 @@
+
+# Problem Statement: Write a program to print the lyrics for ten verses of "The Ants Go Marching."
+#A couple of sample verses are given in the book.  
+#Make sure you make a function for the code.  This function should be called ten times.
+#This method should have two parameters, one for the number of ants and another for the action of the ant(s).
+#
+# Overall Plan:
+# 1. Create ants funtion with two parameters that change throughout the song
+# 2.Create a refrain function with no parameters that remains the same throughout the song
+# 3. Invoke both ants and refrain fuctions in the main when needed
+# 4. Print all ten verses to the screen
+#
+#
+# import the necessary python libraries
+# for this example none are needed
+
+
+def refrain():
+    print("And they all go marching down to the ground")
+    print("To get out of the rain, BOOM! BOOM! BOOM!")
+
+def ants(number, action):
+    print("The ants go marching", number, "by",number,",hurrah,hurrah")
+    print("The ants go marching", number, "by",number,",hurrah,hurrah")
+    print("The ants go marching", number, "by",number,",")
+    print("The little one stops to", action)
+
+def main():
+    ants("one", "suck his thumb")
+    refrain()
+    print()
+    ants("two", "tie his shoe")
+    refrain()
+    print()
+    ants("three", "climb a tree")
+    refrain()
+    print()
+    ants("four", "shut the door")
+    refrain()
+    print()
+    ants("five", "take a dive")
+    refrain()
+    print()
+    ants("six", "pick up sticks")
+    refrain()
+    print()
+    ants("seven", "pray to heaven")
+    refrain()
+    print()
+    ants("eight", "roller skate")
+    refrain()
+    print()
+    ants("nine", "check the time")
+    refrain()
+    print()
+    ants("ten", "shout \"The End\",")
+    print("And they all go marching down to the ground")
+    print("To get out of the rain.")
+
+main()
+    
+    
