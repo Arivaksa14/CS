@@ -1,0 +1,30 @@
+import java.util.Scanner;
+class Main {
+//ROWS=employees; COLS=days of the week
+  public static final int ROWS=3;
+  public static final int COLS=5;
+  public static void main(String[] args) {
+  Scanner keyboard=new Scanner(System.in);
+  
+  double[][] timesheets=new double[ROWS][COLS]; //doube[rows][columns]=two-dimensional array
+  double[] totals= new double[timesheets.length];
+  String[] days={"Monday","Tuesday","Wednesday","Thursday","Friday"};
+  for (int i=0;i<ROWS;i++)
+  {
+  for (int j=0;j<COLS;j++)
+  {
+  System.out.print("Please enter hours worked for employee #"+ (i+1)+" on "+days[j]+": ");
+  timesheets[i][j] = keyboard.nextDouble();
+  totals[i]+=timesheets[i][j];
+  }
+  System.out.println();
+  }
+  for (int i = 0; i <totals.length; i++)
+  {
+  System.out.println("\nTotal hours worked for employee #"+ (i+1)+": "+totals[i]);
+  System.out.println("Total hours worked for employee #"+ (i+1)+": "+ totals[i]/days.length);
+
+  }
+  keyboard.close();}
+  
+  }
