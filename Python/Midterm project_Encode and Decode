@@ -1,0 +1,53 @@
+
+# Problem Statement: Write a program that can encode and decode Caesar ciphers.
+#
+# Overall Plan:
+# 1. Display the welcome message
+# 2. Read in the text input from the user
+# 3. Create CaesarCipher function for circular shifts of each letter of the text
+# 4. Create CeaserCipherAnswer function to take care of letters near the end of alphabet
+# 5. Display the encrypted or decrypted text to the screen.
+#
+#
+# import the necessary python libraries
+# for this example ascii_lowercase and ascii_uppercase libraries are needed
+
+from string import ascii_lowercase, ascii_uppercase
+
+def CaesarCipher(string, key):
+    # Shifts in a circular fashion
+    new = ""
+    for ch in string:
+        if ch in ascii_lowercase:
+            add = ascii_lowercase.index(ch)
+            if add + key > 25:
+                new += ascii_lowercase[add+key-24]
+            else:
+                new += ascii_lowercase[add+key]
+        elif ch in ascii_uppercase:
+            add = ascii_uppercase.index(ch)
+            if add + key > 25:
+                new += ascii_uppercase[add+key-24]
+            else:
+                new += ascii_uppercase[add+key]
+        else:
+            new += ch
+    return new
+
+def CeaserCipherAnswer(string, key):
+    chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz"
+    new = ""
+    for ch in string:
+        pos = chars.find(ch)
+# Remainder division to deal with letters dropping off the end of the alphabet:
+        newpos = (pos + key) % len(chars)
+        cipher = cipher + chars[newpos]
+
+def main():
+    print("This program will cipher your message.")
+    string = input("Please enter text message to encode: ")
+    key = int(input("Please enter the key to shift letters(must be an integer): "))
+    print("The cipher of your text is: {0}".format(CaesarCipher(string, key)))
+
+if __name__ == "__main__":
+    main()
