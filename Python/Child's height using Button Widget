@@ -1,0 +1,84 @@
+# Exercise No.   1
+# File Name:     hw9project1
+# Programmer:    Arina Faulkner
+# Date:          Oct. 27, 2021
+#
+# Problem Statement: Use the Button class to create GUI for Homework 7 Project 2.
+#Write a program that takes as input the gender of the child, the height of the mother in inches and the height of the father in inches.
+#Output the estimated adult height of the child in inches. 
+#Convert this to feet, and inches, ex. 63 inches = 5 feet 3 inches.
+# Overall Plan:
+# 1. Print an initial welcoming message to the screen
+# 2. Prompt the user for child gender and height of parents inputs
+# 3. Calculate the estimated adult height of the child in inches. Convert it to feet and inches
+# 4. Print the estimated height to the screen
+#
+#
+# import the necessary python libraries
+# for this example graphics library and Button class aren needed
+
+from graphics import *
+
+from button import Button
+
+ # create the application window
+win = GraphWin("Calculate a child's height",600,600)
+win.setBackground('yellow')
+
+
+def heightFormula(inputBox1,inputBox2,inputBox3):
+    num1 = float(inputBox1.getText())
+    num2 = float(inputBox2.getText())
+    gender = inputBox3.getText()
+    
+    if gender=='male' or gender=='Male':
+        formula=((num1*13/12)+num2)//2
+    elif gender=='female' or gender=='Female':
+        formula=((num2*12/13)+num1)//2
+    return formula
+
+def main():
+    # Print a message to the screen
+    Text(Point(30,20),"Hello!").draw(win)
+    Text(Point(130,30),"Let's see what your child's adult height will be!").draw(win)
+
+ # Draw the interface widgets
+    Text(Point(100,50), "   Mother's height(in inches):").draw(win)
+    Text(Point(100,100), "  Father's height(in inches):").draw(win)
+    Text(Point(100,150), "  Gender: Male or Female ").draw(win)
+    Text(Point(100,280), "The child's height will be:").draw(win) 
+    inputBox1 = Entry(Point(200,50), 7)
+    inputBox2 = Entry(Point(200,100), 7)
+    inputBox3 = Entry(Point(200,150), 7)
+    inputBox1.setText("0.0")
+    inputBox2.setText("0.0")
+    inputBox3.setText("Text")
+    inputBox1.draw(win)
+    inputBox2.draw(win)
+    inputBox3.draw(win)
+    output = Text(Point(200,300),"")
+    output.setFill("red")
+    output.draw(win)
+    rollButton = Button(win, Point(100,200), 100, 70, "Calculate the height")
+    rollButton.activate()
+    quitButton = Button(win, Point(100,400), 50, 35, "Quit")
+
+    # wait for a mouse click
+    win.getMouse()
+
+     # display output and change button
+    height_child=heightFormula(inputBox1,inputBox2,inputBox3)
+    height_child_feet=int (height_child//12)
+    height_child_inches=int(height_child%12)
+    output.setText(str(height_child)+" inches. Which is "+str(height_child_feet)+" feet and "+str(height_child_inches)+" inches.")
+    quitButton.activate()
+
+    # wait for click and then quit
+    win.getMouse()
+    win.close()
+
+
+
+                
+main()
+
