@@ -1,0 +1,56 @@
+
+import java.text.DecimalFormat;
+import java.util.Scanner;
+class Main {
+  public static void main(String[] args) {
+  Scanner keyboard= new Scanner(System.in);
+  DecimalFormat noDPs= new DecimalFormat("#.#");
+    System.out.println("********************************************************************");
+    System.out.println("**                                                                **");
+        System.out.println("**                   WELCOME TO ARI'S BASIC CALCULATOR            **");
+        System.out.println("**                                                                **");
+         System.out.println("********************************************************************");
+         System.out.println("Type on of the following operators:\n+ (for adding numbers)\n- (for subtracting numbers)\n* (for multiplying numbers)\n/ (for dividing numbers)\n% (for finding the remainder when two numbers are divided)\n^ (for exponentiation - one number raised to the power to the other)");
+          System.out.println("********************************************************************");
+
+          String operator=keyboard.nextLine();
+          
+          double result=0;
+          System.out.print("Enter an operand (number): ");
+          double operand_1=keyboard.nextDouble();
+          System.out.print("Enter an operand (number): ");
+          double operand_2=keyboard.nextDouble();
+          
+          switch(operator)
+          {
+
+            case "+":
+            result=operand_1+operand_2;
+            break;
+            case"-":
+            result=operand_1-operand_2;
+            break;
+            case"*":
+            result=operand_1*operand_2;
+            break;
+            case"/":
+            result=operand_1/operand_2;
+            break;
+            case"%":
+            result=operand_1%operand_1;
+            break;
+            case"^":
+            result=Math.pow(operand_1,operand_2);
+            break;
+            default: 
+            System.out.println("Error!  Operator undefined in this version of the calculator.");
+             System.exit(0);
+          }
+          System.out.println(noDPs.format(operand_1)+operator+noDPs.format(operand_2)+" = "+result);
+           keyboard.close();}
+           
+           
+
+        
+    }
+  
