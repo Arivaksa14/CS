@@ -1,0 +1,41 @@
+
+# Problem Statement: The speeding ticket fin policy in Poducksville is $50 plus $5 for each mph over the limit plus a penalty of $200 for any speed over 90 mph.
+#Write a program that accepts a speed limit and a clocked speed and either prints a message indicating the speed was legal or prints the amount of the fine, if the speed is illegal. (#6, pg. 230)
+# Overall Plan:
+# 1. Print an initial welcoming message to the screen
+# 2. Prompt the user for speed limit and clocked speed inputs
+# 3. Calculate the estimated fine if clocked speed exceeded the speed limit. 
+# 4. Print the fine amount to the screen
+#
+#
+# import the necessary python libraries
+# for this example none are needed
+
+
+def main():
+    # Print a message to the screen
+    print("Hello!")
+    print("The speeding ticket fin policy in Poducksville is $50 plus $5 for each mph over the limit plus a penalty of $200 for any speed over 90 mph.")
+
+    # Variables are declared dynamically no need to pre-define
+    speed_limit = eval(input("Enter the speed limit:"))
+    clocked_speed = eval(input("Enter the clocked speed:"))
+    
+    #Here is the processing that is needed
+    if clocked_speed<=speed_limit:
+        print("The speed was legal! Drive safe!")
+    elif clocked_speed>speed_limit:
+        difference=clocked_speed-speed_limit
+        if clocked_speed-speed_limit>90:
+            fine=50+5*difference+200
+            print("Your fine according to fin policy in Poducksville is $",fine)
+        else:
+            fine=50+5*difference
+            print("Your fine according to fin policy in Poducksville is $",fine)
+        
+            
+    else:
+        print ("Please enter the speed limit and clocked speed in mph.")
+
+
+main()
