@@ -1,0 +1,97 @@
+Main.java:
+
+import java.util.Scanner;
+class Main {
+  public static void main(String[] args) {
+ Scanner keyboard=new Scanner(System.in);
+    int choice,number;
+    String prefix;
+    double units;
+    
+    
+System.out.println(
+  
+"********************************************************************\n"
++ "**                                                                **\n"
++ "**                   WELCOME TO MIRACOSTA COURSES                 **\n"
++ "**                                                                **\n"
++ "********************************************************************\n"
++ "** Please select from the following choices:                      **\n"
++ "** 1) Create a new Course                                         **\n"
++ "** 2) Exit                                                        **\n"
++ "********************************************************************");
+choice=keyboard.nextInt();
+switch(choice)
+{
+case 1:
+keyboard.nextLine();
+System.out.println("Enter cource prefix: ");
+prefix=keyboard.nextLine();
+
+System.out.println("Enter cource number : ");
+number=keyboard.nextInt();
+
+System.out.println("Enter cource units : ");
+units=keyboard.nextDouble();
+
+Course myCourse=new Course(prefix, number, units);
+System.out.println("~~~Original Course - Entered by User~~~");
+System.out.println(myCourse);
+myCourse.setPrefix("PHYS");
+myCourse.setNumber(151);
+myCourse.setUnits(4.0);
+System.out.println("\n~~~Modified Course - After Setters~~~");
+System.out.println(myCourse);
+case 2:
+System.exit(0);
+}}}
+
+
+
+Course.java:
+
+class Course{
+private String mPrefix;
+private int mNumber;
+private double mUnits;
+
+public Course (String prefix,int number,double units)
+
+{
+mPrefix=prefix;
+mNumber=number;
+mUnits=units;
+}
+public String toString()
+
+{
+String output="Course= [ "+mPrefix+" "+mNumber+", "+mUnits+" units ]";
+return output;
+
+}
+
+public int getNumber()
+{
+return mNumber;
+}
+public String getPrefix()
+{
+return mPrefix;
+}
+public double getUnits()
+{
+return mUnits;
+}
+public void setNumber(int newNumber)
+{
+mNumber=newNumber;
+}
+public void setPrefix(String newPrefix)
+{
+mPrefix=newPrefix;
+}
+public void setUnits(double newUnits)
+{
+mUnits=newUnits;
+}
+}
