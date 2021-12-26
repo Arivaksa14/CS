@@ -1,0 +1,46 @@
+# Exercise No.   extraCredit
+# File Name:     hw12extraCredit
+# Programmer:    Arina Faulkner
+# Date:          Nov. 19, 2021
+#
+# Problem Statement: Write a program that allows a user to enter a number and a base and then prints out the digits of the number in the new base.  Use a recursive function baseConversion(num, base) to print the digits.
+
+
+# Overall Plan:
+# 1.Create recursive baseConversion function that takes in integer number and base 
+# 2. Create base case for recursive method. Prompt user for integer number and base inputs. Create safeguards for inputs.
+# 3. Display the number and base to the screen 
+#
+#
+# import the necessary python libraries
+# for this example none library is needed
+
+
+def baseConversion(num,base):
+
+  #base case:
+  if 0<=num<base:
+    return str(num)
+  else:
+    return baseConversion(num//base,base)+' '+str(num%base)
+
+
+def main():
+  invalid=True
+  while invalid:
+    try:
+      num=int(input("Enter an integer: "))
+      if num<0:
+        print("Invalid input. Try a positive integer.")
+      else:
+        base=int(input("Enter a base (an integer greater than 1):"))
+        if 2<=base:
+          invalid=False
+        else:
+          print("Invalid input.)")
+    except:
+      print("Invalid input.")
+  print(num,"in base",base,"is",baseConversion(num,base))
+
+
+main()
