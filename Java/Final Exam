@@ -1,0 +1,166 @@
+Main.java:
+
+public class Produce extends PaleoFood{
+
+private boolean mOrganic;
+public Produce(String name,int calories, int carbs, boolean organic){
+
+super(name, calories, carbs);
+mOrganic=organic;
+}
+
+public boolean equals(Produce other){
+
+return other.equals(other) && mOrganic==other.mOrganic;
+
+}
+// Getter for boolean type:
+
+ public boolean isOrganic(){
+
+ return mOrganic;
+}
+
+// Setter for boolean type:
+
+public void setOrganic(boolean newOrganic){
+
+  mOrganic=newOrganic;
+
+}
+public String toString(){
+
+
+  String output;
+
+  if(mOrganic)
+
+    output="Organic Produce: ";
+    else
+    output="Produce: ";
+
+output+=mName+", "+mCalories+" calories , "+mCarbs+"g carbs";
+
+return output;
+}}
+
+Computer.java:
+public class Computer extends GamingPlatform{
+
+
+private String mVideoCard;
+
+public String getVideoCard(){
+  return mVideoCard;
+}
+
+public void setVideoCard(String newVideoCard){
+  mVideoCard=newVideoCard;
+}
+
+
+public Computer(String manufacturer, String model, double price, String videoCard){
+  super(manufacturer, model, price);
+
+  mVideoCard=videoCard;
+
+}
+public boolean equals(Computer other){
+
+return super.equals(other) && mVideoCard.equals(other.mVideoCard) ;}
+
+
+public String toString(){
+
+
+  return "Computer [Manufacturer="+mManufacturer+", Model="+mModel+", Video Card="+mVideoCard+", Price="+currency.format(mPrice)+"]";
+}
+
+}
+
+Console.java:
+
+public class Console extends GamingPlatform{
+
+private String mController;
+
+public String getController(){
+  return mController;
+}
+
+public void setController(String newController){
+  mController=newController;
+}
+
+
+public Console(String manufacturer, String model, double price, String controller){
+super(manufacturer, model, price);
+mController=controller;
+
+}
+
+
+public boolean equals(Console other){
+
+return super.equals(other) && mController.equals(other.mController) ;}
+
+
+public String toString(){
+
+
+  return "Console [Manufacturer="+mManufacturer+", Model="+mModel+", Controller="+mController+", Price="+currency.format(mPrice)+"]";
+}
+}
+
+GamingPlatform.java:
+import java.text.NumberFormat;
+
+public abstract class GamingPlatform{
+
+protected NumberFormat currency = NumberFormat.getCurrencyInstance();
+protected String mManufacturer;
+protected String mModel;
+protected double mPrice;
+
+public GamingPlatform(String manufacturer, String model, double price) {
+mManufacturer=manufacturer;
+mModel=model;
+mPrice=price;
+}
+
+
+//Getters:
+
+public String getManufacturer(){
+  return mManufacturer;
+}
+
+public String getModel(){
+  return mModel;
+}
+public double getPrice(){
+  return mPrice;
+}
+
+
+//Setters:
+
+public void setManufacturer(String newManufacturer){
+  mManufacturer=newManufacturer;
+}
+public void setModel(String newModel){
+  mModel=newModel;
+}
+
+public void setPrice(double newPrice){
+
+  mPrice=newPrice;
+}
+
+
+public boolean equals(GamingPlatform other){
+
+return mManufacturer.equals(other.mManufacturer) && mModel.equals(other.mModel) && mPrice==other.mPrice;}
+}
+
+
