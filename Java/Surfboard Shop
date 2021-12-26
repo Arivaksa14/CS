@@ -1,0 +1,209 @@
+Main.java:
+import java.util.Arrays;
+import java.text.NumberFormat;
+public class Train extends PublicTransport{
+
+private int mNumber;
+
+NumberFormat currency=NumberFormat.getCurrencyInstance();
+
+  public Train(String[] allStops, double baseFare,int currentStop, String provider, int number){
+ super(allStops, baseFare, currentStop, provider);
+ mNumber=number;
+
+ }
+ public int getNumber(){
+
+return mNumber;
+
+
+}
+
+public void setNumber(int newNumber){
+mNumber=newNumber;
+}
+
+public boolean equals(Train other){
+
+return super.equals(other) && mNumber==other.mNumber;
+
+}
+
+public String toString(){
+String output="Train ["+mProvider+", "+mNumber+", "+currency.format(mBaseFare)+" base fare, Stops= "+Arrays.toString(mAllStops)+", Current Stop= "+mAllStops[mCurrentStop]+"]";
+
+
+  return output;
+}
+
+public boolean goToNextStop(){
+  if(mAllStops[mCurrentStop].equals(mAllStops[mAllStops.length-1])){
+    return true;
+  } else return false;
+}
+
+}
+Surfboard.java:
+
+
+public class Surfboard extends SurfGear{
+
+  private int mFeet;
+  private int mInches;
+  private double mWidth;
+  private double mThickness;
+
+public Surfboard(String brand,String model,double price,int quantity,int feet,int inches, double width, double thickness){
+
+super(brand, model, price, quantity);
+
+mFeet=feet;
+mInches=inches;
+mWidth=width;
+mThickness=thickness;}
+
+public int getFeet(){
+return mFeet;
+}
+public int getInches(){
+return mInches;
+}
+
+public double getWidth(){
+return mWidth;
+}
+public double geThickness(){
+return mThickness;
+}
+
+public void setFeet(int newFeet){
+mFeet=newFeet;
+}
+
+public void setInches(int newInches){
+mId=newInches;
+}
+
+
+public void setWidth(double newWidth){
+mWidth=newWidth;
+}
+
+public void setThickness(double newThickness){
+mThickness=newThickness;
+}
+
+public boolean equals(Surfboard other){
+
+return super.equals(other) && mFeet==other.mFeet && mInches==other.mInches && mWidth==other.mWidth && mThickness==other.mThickness;
+
+}
+
+public String toString(){
+
+return "Surfboard [Id#" + mId+", Brand= "+mBrand+", Model= "+mModel+", Length= "+mFeet+"\'"+mInches+"\""+", Width= "+mWidth+" in, Thickness= "+mThickness+" in, Quantity= "+mQuantity+", Price="+currency.format(mPrice)+"]";
+
+
+}
+
+}
+
+SurfGear.java:
+
+import java.text.NumberFormat;
+public abstract class SurfGear{
+protected int mId;
+protected String mBrand;
+protected String mModel;
+protected double mPrice;
+protected int mQuantity;
+protected static int sNextId=10000;
+protected static NumberFormat currency=NumberFormat.getCurrencyInstance();
+protected SurfGear(String brand,String model,double price,int quantity){
+
+mId=sNextId++;
+mBrand=brand;
+mModel=model;
+mPrice=price;
+mQuantity=quantity;}
+
+
+//getters:
+public int getId(){
+return mId;
+}
+public String getBrand(){
+return mBrand;}
+
+public String getModel(){
+return mModel;
+}
+
+public double getPrice(){
+return mPrice;
+}
+public int getQuantity(){
+return mQuantity;
+}
+//setters:
+public void setId(int newId){
+mId=newId;
+}
+
+public void setBrand(String newBrand)
+{
+mBrand=newBrand;
+}
+public void setModel(String newModel)
+{
+mModel=newModel;
+}
+public void setPrice(double newPrice){
+
+mPrice=newPrice;
+}
+public void setQUantity(int newQuantity){
+mQuantity=newQuantity;}
+
+public boolean equals(SurfGear other){
+  return mId==other.mId && mBrand.equals(other.mBrand) && mModel.equals(other.mModel) && mPrice==other.mPrice && mQuantity==other.mQuantity;}
+}
+
+Wetsuit.java:
+
+public class Wetsuit extends SurfGear{
+
+ private String mSize;
+ private String mThickness;
+
+public Wetsuit(String brand,String model,double price,int quantity, String size,String thickness){
+
+super(brand, model, price, quantity);
+
+mSize=size;
+mThickness=thickness;}
+
+public String getSize(){
+return mSize;}
+
+public String getThickness(){
+return mThickness;
+}
+
+public void setSize(String newSize)
+{
+mSize=newSize;
+}
+
+public void setThickness(String newThickness)
+{
+mThickness=newThickness;
+}
+
+public boolean equals(Wetsuit other){
+
+return super.equals(other) && mSize.equals(other.mSize) && mThickness.equals(other.mThickness);}
+
+public String toString(){
+
+return "Wetsuit   [Id#" + mId+", Brand= "+mBrand+", Model= "+mModel+", Size="+mSize+", Thickness= "+mThickness+" mm, Quantity= "+mQuantity+", Price="+currency.format(mPrice)+"]";}}
