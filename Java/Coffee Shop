@@ -1,0 +1,344 @@
+Main.java:
+
+
+public class Wetsuit extends SurfGear{
+
+ private String mSize;
+ private String mThickness;
+
+public Wetsuit(String brand,String model,double price,int quantity, String size,String thickness){
+
+super(brand, model, price, quantity);
+
+mSize=size;
+mThickness=thickness;}
+
+public String getSize(){
+return mSize;}
+
+public String getThickness(){
+return mThickness;
+}
+
+public void setSize(String newSize)
+{
+mSize=newSize;
+}
+
+public void setThickness(String newThickness)
+{
+mThickness=newThickness;
+}
+
+public boolean equals(Wetsuit other){
+
+return super.equals(other) && mSize.equals(other.mSize) && mThickness.equals(other.mThickness);}
+
+public String toString(){
+
+return "Wetsuit   [Id#" + mId+", Brand= "+mBrand+", Model= "+mModel+", Size="+mSize+", Thickness= "+mThickness+" mm, Quantity= "+mQuantity+", Price="+currency.format(mPrice)+"]";}}
+
+Breakfast.java:
+public class Breakfast extends CoffeeShop{
+
+  //fields
+  private String mType;
+  private String mIngredients;
+  private boolean mVegan;
+  
+  //constructor
+  public Breakfast (String name, double price, int quantity, String type, String ingredients, boolean vegan)
+  {
+    super(name, price, quantity);
+    mType = type;
+    mIngredients = ingredients;
+    mVegan = vegan;
+  }
+
+  //equals
+  public boolean equals (Breakfast other)
+  {
+    return super.equals(other) && mType.equals(other.mType) && mIngredients.equals(other.mIngredients) && mVegan == other.mVegan;
+  }
+
+  //string format
+  public String toString()
+  {
+    return "Breakfast Item [Id#" + mId+", Name="+ mName + ", Type=" + mType + ", Ingredients=[" + mIngredients + "], Vegan=" + mVegan + ", Quantity=" + mQuantity + ", Price=" + currency.format(mPrice) + "]";
+  }
+
+  //setters
+  public String getType()
+  {
+    return mType;
+  }
+  public String getIngredients()
+  {
+    return mIngredients;
+  }
+  public boolean isVegan()
+  {
+    return mVegan;
+  }
+
+  //getters
+  public void setType (String type)
+  {
+    mType = type;
+  }
+  public void setIngredients(String ingredients)
+  {
+    mIngredients = ingredients;
+  }
+  public void setVegan(boolean vegan)
+  {
+    mVegan = vegan;
+  }
+
+  
+}
+CoffeeShop.java:
+
+import java.text.NumberFormat;
+
+public abstract class CoffeeShop 
+{
+  protected NumberFormat currency = NumberFormat.getCurrencyInstance();
+
+  //fields
+  protected int mId;
+  protected String mName;
+  protected double mPrice;
+  protected int mQuantity;
+
+  //statics
+  protected static int sNextId=100;
+
+  // constructor
+  protected CoffeeShop(String name, double price, int quantity)
+  {
+    mId = sNextId++;
+    mName = name;
+    mPrice = price;
+    mQuantity = quantity;
+  }
+
+  // equals
+ public boolean equals(CoffeeShop other)
+  {
+    return mId == other.mId && mName.equals(other.mName) && mPrice == other.mPrice && mQuantity == other.mQuantity;
+  }
+
+
+   //getters
+  public int getId()
+  {
+    return mId;
+  }
+  public String getName()
+  {
+    return mName;
+  }
+  public double getPrice()
+  {
+    return mPrice;
+  }
+  public int getQuantity()
+  {
+    return mQuantity;
+  }
+
+  //setters
+  public void setId(int id)
+  {
+    mId = id;
+  }
+  public void setName (String name)
+  {
+    mName = name;
+  }
+  public void setPrice(double price)
+  {
+    mPrice = price;
+  }
+  public void setQuantity(int quantity)
+  {
+    mQuantity = quantity;
+  }
+
+}
+
+EspressoDrink.java:
+
+public class EspressoDrink extends CoffeeShop{
+
+private String mHotOrIced;
+private int mSize;
+private int mNumberOfShots;
+
+//constructor:
+public EspressoDrink(String name,String hotOrIced, int size,int numberOfShots,double price,int quantity)
+
+{
+
+super(name, price, quantity);
+
+mHotOrIced=hotOrIced;
+mSize=size;
+mNumberOfShots=numberOfShots;
+
+}
+//Getters:
+public String getHotOrIced(){
+
+return mHotOrIced;
+}
+public int getSize(){
+return mSize;
+}
+public int getNumberOfShots(){
+return mNumberOfShots;
+}
+
+
+//Setters:
+public void setHotOrIced(String newHotOrIced){
+mHotOrIced=newHotOrIced;
+
+}
+public void setSize(int newSize){
+mSize=newSize;
+}
+
+public void setNumberOfShots(int newNumberOfShots){
+mNumberOfShots=newNumberOfShots;
+}
+
+//equals method:
+
+public boolean equals(EspressoDrink other){
+
+return super.equals(other) && mHotOrIced.equals(other.mHotOrIced) && mSize==other.mSize && mNumberOfShots==other.mNumberOfShots;
+
+}
+//toString method:
+public String toString(){
+
+return "Espresso Drink [Id#" + mId+", Name= "+mName+", Hot or Iced = "+mHotOrIced+", Size= "+mSize+" fl. oz., Number of espresso shots="+mNumberOfShots+", Quantity= "+mQuantity+", Price= "+currency.format(mPrice)+ "] ";
+
+
+}
+
+}
+
+Pastry.java:
+
+public class Pastry extends CoffeeShop{
+
+private String mType;
+private int mWeight;
+private String mSweetOrSavory;
+
+//constructor:
+public Pastry(String name, String type, int weight, String sweetOrSavory,double price,int quantity)
+
+{
+
+super(name, price, quantity);
+
+mType=type;
+mWeight=weight;
+mSweetOrSavory=sweetOrSavory;
+}
+
+
+//Getters:
+public String getType(){
+
+return mType;
+}
+public int getWeight(){
+return mWeight;
+}
+public String getSweetOrSavory(){
+return mSweetOrSavory;
+}
+
+
+//Setters:
+public void setType(String newType){
+mType=newType;
+
+}
+public void setWeight(int newWeight){
+mWeight=newWeight;
+}
+
+public void setSweetOrSavory(String newSweetOrSavory){
+mSweetOrSavory=newSweetOrSavory;
+}
+
+//equals method:
+
+public boolean equals(Pastry other){
+
+return super.equals(other) && mType.equals(other.mType) && mSweetOrSavory.equals(other.mSweetOrSavory) && mWeight==other.mWeight;
+
+}
+//toString method:
+public String toString(){
+
+return "Pastry [Id#" + mId+", Name= "+mName+", Needs to be Warmed= "+mType+", Weight= "+mWeight+" grams, Sweet or Savory ="+mSweetOrSavory+", Quantity= "+mQuantity+", Price= "+currency.format(mPrice)+ "] ";
+
+
+}
+
+}
+
+Tea.java:
+public class Tea extends CoffeeShop
+{
+  //fields
+  private String mFlavor;
+  private boolean mCaffeinated;
+
+  //constructor
+  public Tea(String name, double price, int quantity, String flavor, boolean caffeinated)
+  {
+   super(name, price, quantity);
+   mFlavor = flavor;
+   mCaffeinated = caffeinated;
+  }
+
+  //equals
+   public boolean equals (Tea other)
+  {
+    return super.equals(other) && mFlavor.equals(other.mFlavor) && mCaffeinated == other.mCaffeinated; 
+  }
+
+   //string format
+  public String toString()
+  {
+    return "Tea [Id#" + mId+", Name="+ mName + ", Flavor" + mFlavor + ", Caffinated=" + mCaffeinated + ", Quantity=" + mQuantity + ", Price=" + currency.format(mPrice) + "]";
+  }
+
+  //getters
+  public String getFlavor()
+  {
+    return mFlavor;
+  }
+  public boolean isCaffeinated()
+  {
+    return mCaffeinated;
+  }
+
+  //setters
+  public void setFlavor(String flavor)
+  {
+      mFlavor = flavor;
+  }
+  public void setCaffeinated(boolean caffeinated)
+  {
+    mCaffeinated = caffeinated;
+  }
+}
