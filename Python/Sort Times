@@ -1,0 +1,63 @@
+# Exercise No.   1
+# File Name:     hw13project1
+# Programmer:    Arina Faulkner
+# Date:          Nov. 23, 2021
+#
+# Problem Statement:  Verify the sort results. Compare the sort times of python standard sort, selection sort and merge sort for the list sizes of 5000, 50000, and 100000 (if this exceeds 30 minutes just put did not finish)
+ 
+# Overall Plan:
+# 1. Create standard, selection, and merge sort funcions in sorts.py 
+# 2. Create main function to invoke timingCurve function with appropriate inputs.
+#3. Call the timingCurve function for each search and display the time it took for each sorting technique.
+#
+#
+# import the necessary python libraries
+# for this example time library is needed as well as sorts.py
+
+from sorts import *
+
+import random, time
+
+def genList(n):
+    # RETURNS a list of n random floats
+    xs = []
+    for i in range(n):
+        xs.append(random.random())
+    return xs
+
+def timeSort(sortFn, n):
+    # RETURNS the time it takes to sort a random list of size n
+    #    using the given sorting function sortFn
+    xs = genList(n)
+    t1 = time.time()
+    sortFn(xs)
+    t2 = time.time()
+    return t2 - t1
+
+def timingCurve(sortFn, start, inc, stop, trials):
+    # RETURNS a list representing the average time required to sort
+    #     lists of sizes start, start+inc, start+2*inc, ..., stop.
+    times = []
+    for n in range(start, stop, inc):
+        print("List size: ", n)
+        sum = 0.0
+        for i in range(trials):
+            print(i)
+            sum = sum + timeSort(sortFn,n)
+        avg = sum / trials
+        print("Average time it took to sort = {0:0.10f}".format(avg))
+        times.append(avg)
+    return times
+
+def main():
+  print("Using Standard Sorting function:")
+  timingCurve(standardSort, 5000, 45000, 50001, 5)
+  timingCurve(standardSort, 100000, 1,100001, 5)
+  print("\nUsing Selection Sorting function:")
+  timingCurve(selSort, 5000, 45000, 50001, 5)
+  timingCurve(selSort, 100000, 1,100001, 5)
+  print("\nUsing Merge Sorting function:")
+  timingCurve(mergeSort, 5000, 45000, 50001, 5)
+  timingCurve(mergeSort, 100000, 1,100001, 5)
+  
+main()
