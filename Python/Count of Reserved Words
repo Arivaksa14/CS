@@ -1,0 +1,49 @@
+
+# Exercise No.   1
+# File Name:     hw10Project1.py
+# Programmer:    Arina Faulkner
+# Date:          Nov.3, 2021
+#
+# Problem Statement: Create a program that counts the reserved words in a python file.
+#Use the reserved word list found in Appendix A of your textbook.  
+#
+# Overall Plan:
+# 1. Create a dictionary with reserved words
+# 2. prompt for a source code file name
+# 3. Count reserved words in the provided file
+# 4. Display the keywords and their frequency
+#
+#
+# import the necessary python libraries: none
+
+def main():
+    print("This program counts the reserved words in a python file")
+  
+
+    keywords={"False","None","True","and","as","assert","break","class","continue",
+              "def","del", "elif","else","except","finally","for","from","global",
+              "if","import","in","is","lambda","nonlocal","not","or","pass","raise",
+              "return","try","while","yield"}
+
+    # get the sequence of words from the file
+    filename=input("Enter a Pyhton source code filename: ").strip()
+
+    infile=open(filename,"r")
+    text=infile.read().split()
+
+    
+    #construct a dictionary of word counts
+    counts = {}
+    for w in text:
+        if w in keywords:
+            counts[w] = counts.get(w,0) + 1
+        #if w is not alredy in the disctionary, this
+        #get will return 0, and the result is that the entry for w is set to 1.
+            
+    for i in keywords:
+        count = counts.get(i,0)
+        print("{0:<15}{1:>5}".format(i, count))
+            
+
+if __name__ == '__main__':
+    main()
