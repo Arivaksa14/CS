@@ -1,0 +1,65 @@
+# Exercise No.   1
+# File Name:     hw12project1
+# Programmer:    Arina Faulkner
+# Date:          Nov. 19, 2021
+#
+# Problem Statement: Verify the search results. Compare the search times of linear search and binary search for the list sizes of 1000, 10000, and 100000. 
+
+ 
+# Overall Plan:
+# 1. Create linear and binary search functions
+# 2. Create a list with given values of 1000, 10000, and 100000. Sort the list before calling binary search function
+# 3. Call both functions and display the time it took to do both linear and binary searches. 
+#
+#
+# import the necessary python libraries
+# for this example random and time libraries are needed
+
+import random
+import time
+
+def sequentialSearch(alist, item):
+    pos = 0
+    found = False
+
+    while pos < len(alist) and not found:
+        if alist[pos] == item:
+            found = True
+        else:
+            pos = pos + 1
+
+    return found
+
+def binSearch(this_list, target):
+  return binSearchHelper(this_list, target, 0, len(this_list) - 1)
+
+def binSearchHelper(this_list, target, left, right):
+    if left > right:
+        return False
+
+    middle = (left + right)//2
+    if this_list[middle] == target:
+        return True
+    elif this_list[middle] > target:
+        return binSearchHelper(this_list, target, left, middle - 1)
+    else:
+        return binSearchHelper(this_list, target, middle + 1, right)
+
+
+this_list_sizes = [1000,10000,100000]
+for size in this_list_sizes:
+    this_list = []
+    this_list.sort()
+    for x in range(size):
+        this_list.append(random.randint(1,100000))
+
+    sequential_search_start_time = time.time()
+    sequentialSearch(this_list,-1)
+    sequential_search_end_time = time.time()
+    print("Time taken by linear search is = ",(sequential_search_end_time-sequential_search_start_time))
+
+    binary_search_start_time = time.time()
+    binSearch(this_list,-1)
+    binary_search_end_time = time.time()
+    print("Time taken by binary search is = ",(binary_search_end_time-binary_search_start_time))
+    print("\n")
