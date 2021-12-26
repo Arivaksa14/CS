@@ -1,0 +1,165 @@
+Main.java: 
+
+
+
+class Main {
+  public static void main(String[] args) {
+    PublicTransport[] transportOption=new PublicTransport[4];
+   String[] array1= {"OSide Transit Center", "OSide Blvd", "Plaza Camino Real", "MiraCosta College", "Thunder Dr.", "Vista Transit Center"};
+transportOption[0]= new Bus(array1,2.5,0,"NCTD Breeze",302);
+
+  String[] array2={"San Marcos","Escondido","Ramona","Lake Forest"};
+  transportOption[1]=new Bus(array2,3.0,1,"Greyhound",202);
+
+ String[] array3={"Oceanside", "Carlsbad", "Encinitas", "Solana Beach", "La Jolla", "Old Town", "Santa Fe Depot"};
+  transportOption[2]=new Train(array3,18,0,"Amtrak",726);
+
+
+   String[] array4={"12 Forest","Beach Road","Watermarque","Baguettè","Five dollars","San Ramonè"};
+  transportOption[3]=new Train(array4,100,0,"Train",606);
+
+
+for ( PublicTransport p:transportOption){
+System.out.println(p);
+
+}}}
+
+Bus.java:
+
+import java.util.Arrays;
+import java.text.NumberFormat;
+public class Bus extends PublicTransport{
+
+private int mRout;
+
+NumberFormat currency=NumberFormat.getCurrencyInstance();
+
+  public Bus(String[] allStops, double baseFare,int currentStop, String provider, int rout){
+ super(allStops, baseFare, currentStop, provider);
+ mRout=rout;
+ }
+ public int getRout(){
+
+return mRout;
+
+
+}
+public void setRout(int newRout){
+mRout=newRout;
+}
+
+public boolean equals(Bus other){
+
+return super.equals(other) && mRout==other.mRout;
+
+}
+
+public String toString(){
+String output="Bus   ["+mProvider+", Rout "+mRout+", "+currency.format(mBaseFare)+" base fare, Stops= "+Arrays.toString(mAllStops)+", Current Stop= "+mAllStops[mCurrentStop]+"]";
+
+
+  return output;
+}
+
+public boolean goToNextStop(){
+  if(mAllStops[mCurrentStop].equals(mAllStops[mAllStops.length-1])){
+    return true;
+  } else return false;
+}
+
+
+}
+
+PublicTransport.java:
+
+public abstract class PublicTransport{
+protected String[] mAllStops;
+protected double mBaseFare;
+protected int mCurrentStop;
+protected String mProvider;
+protected PublicTransport(String[] allStops, double baseFare,int currentStop, String provider)
+{
+mAllStops=allStops;
+mBaseFare=baseFare;
+mCurrentStop=currentStop;
+mProvider=provider;
+
+}
+
+public String[] getAllStops(){
+return mAllStops;}
+
+public double getBaseFare(){
+return mBaseFare;
+}
+public int getCurrentStop(){
+return mCurrentStop;
+}
+
+public String getProvider(){
+return mProvider;
+}
+public void setAllStops(String[] newAllStops)
+{
+mAllStops=newAllStops;
+}
+public void setBaseFare(int newBaseFare){
+mBaseFare=newBaseFare;
+}
+public void setCurrentStop(int newCurrentStop){
+mCurrentStop=newCurrentStop;
+
+}
+public void setProvider(String newProvider)
+{
+mProvider=newProvider;
+}
+//abstract method:
+public abstract boolean goToNextStop();
+}
+
+Train.java:
+import java.util.Arrays;
+import java.text.NumberFormat;
+public class Train extends PublicTransport{
+
+private int mNumber;
+
+NumberFormat currency=NumberFormat.getCurrencyInstance();
+
+  public Train(String[] allStops, double baseFare,int currentStop, String provider, int number){
+ super(allStops, baseFare, currentStop, provider);
+ mNumber=number;
+
+ }
+ public int getNumber(){
+
+return mNumber;
+
+
+}
+
+public void setNumber(int newNumber){
+mNumber=newNumber;
+}
+
+public boolean equals(Train other){
+
+return super.equals(other) && mNumber==other.mNumber;
+
+}
+
+public String toString(){
+String output="Train ["+mProvider+", "+mNumber+", "+currency.format(mBaseFare)+" base fare, Stops= "+Arrays.toString(mAllStops)+", Current Stop= "+mAllStops[mCurrentStop]+"]";
+
+
+  return output;
+}
+
+public boolean goToNextStop(){
+  if(mAllStops[mCurrentStop].equals(mAllStops[mAllStops.length-1])){
+    return true;
+  } else return false;
+}
+
+}
