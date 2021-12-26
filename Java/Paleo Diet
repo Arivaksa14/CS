@@ -1,0 +1,185 @@
+Main.java:
+
+public class Tea extends CoffeeShop
+{
+  //fields
+  private String mFlavor;
+  private boolean mCaffeinated;
+
+  //constructor
+  public Tea(String name, double price, int quantity, String flavor, boolean caffeinated)
+  {
+   super(name, price, quantity);
+   mFlavor = flavor;
+   mCaffeinated = caffeinated;
+  }
+
+  //equals
+   public boolean equals (Tea other)
+  {
+    return super.equals(other) && mFlavor.equals(other.mFlavor) && mCaffeinated == other.mCaffeinated; 
+  }
+
+   //string format
+  public String toString()
+  {
+    return "Tea [Id#" + mId+", Name="+ mName + ", Flavor" + mFlavor + ", Caffinated=" + mCaffeinated + ", Quantity=" + mQuantity + ", Price=" + currency.format(mPrice) + "]";
+  }
+
+  //getters
+  public String getFlavor()
+  {
+    return mFlavor;
+  }
+  public boolean isCaffeinated()
+  {
+    return mCaffeinated;
+  }
+
+  //setters
+  public void setFlavor(String flavor)
+  {
+      mFlavor = flavor;
+  }
+  public void setCaffeinated(boolean caffeinated)
+  {
+    mCaffeinated = caffeinated;
+  }
+}
+
+Meat.java:
+public class Meat extends PaleoFood{
+
+private String mType;
+private int mCookingTemp;
+
+public Meat(String name,int calories, String type, int cookingTemp){
+
+  super(name,calories,0);
+
+  mType=type;
+  mCookingTemp=cookingTemp;
+
+}
+//getters:
+
+public String getType(){
+  return mType;
+}
+
+public int getCookingTemp(){
+  return mCookingTemp;
+}
+//setters:
+public void setType(String newType){
+  mType=newType;
+}
+public void setCookingTemp(int newCookingTemp){
+
+  mCookingTemp=newCookingTemp;
+}
+
+public boolean equals(Meat other)
+{
+return super.equals(other) && mType==other.mType && mCookingTemp==other.mCookingTemp;
+
+}
+
+public String toString(){
+
+return mType+": "+mName+", "+mCalories+" calories, "+mCarbs+"g carbs, "+mCookingTemp+" degrees F";}}
+
+
+  
+PaleoFood.java:
+
+public abstract class PaleoFood{
+  
+
+protected String mName;
+protected int mCalories;
+protected int mCarbs;
+
+protected PaleoFood(String name,int calories, int carbs){
+
+mName=name;
+mCalories=calories;
+mCarbs=carbs;}
+
+public boolean equals(PaleoFood other){
+
+return mName.equals(other.mName) && mCalories==other.mCalories && mCarbs==other.mCarbs;}
+
+//Getters:
+public String getName(){
+  return mName;
+}
+
+public int getCalories(){
+  return mCalories;
+}
+
+public int getCarbs(){
+
+  return mCarbs;
+}
+
+//Setters:
+public void setName(String newName){
+  mName=newName;
+}
+
+public void setCalories(int newCalories){
+
+  mCalories=newCalories;
+}
+
+public void setCarbs(int newCarbs){
+
+  mCarbs=newCarbs;}}
+  
+  Produce.java:
+  
+  public class Produce extends PaleoFood{
+
+private boolean mOrganic;
+public Produce(String name,int calories, int carbs, boolean organic){
+
+super(name, calories, carbs);
+mOrganic=organic;
+}
+
+public boolean equals(Produce other){
+
+return other.equals(other) && mOrganic==other.mOrganic;
+
+}
+// Getter for boolean type:
+
+ public boolean isOrganic(){
+
+ return mOrganic;
+}
+
+// Setter for boolean type:
+
+public void setOrganic(boolean newOrganic){
+
+  mOrganic=newOrganic;
+
+}
+public String toString(){
+
+
+  String output;
+
+  if(mOrganic)
+
+    output="Organic Produce: ";
+    else
+    output="Produce: ";
+
+output+=mName+", "+mCalories+" calories , "+mCarbs+"g carbs";
+
+return output;
+}}
